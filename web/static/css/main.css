@@ -1,0 +1,229 @@
+/* Writing Project - Main Stylesheet */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main container */
+.scene-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Scene content */
+.scene {
+    padding: 40px;
+}
+
+.scene h2 {
+    font-size: 1.75rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* Narrative text */
+.narrative {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+/* Keyword annotations */
+.kw {
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.kw-mental {
+    background-color: rgba(74, 144, 226, 0.15);
+    color: #2c5aa0;
+}
+
+.kw-physical {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #c0392b;
+}
+
+.kw-emotional {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #27ae60;
+}
+
+.kw-magic {
+    background-color: rgba(155, 89, 182, 0.15);
+    color: #8e44ad;
+}
+
+.kw-learned {
+    font-weight: 700;
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* Matched keywords in validation */
+.match-correct {
+    background-color: rgba(46, 204, 113, 0.3);
+    color: #27ae60;
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Choices section */
+.choices {
+    margin-top: 30px;
+}
+
+.choice-option {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.choice-option:hover {
+    border-color: #667eea;
+    background-color: #f8f9ff;
+    transform: translateX(5px);
+}
+
+.choice-option input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.choice-option label {
+    cursor: pointer;
+    font-size: 1.05rem;
+    display: inline-block;
+    width: calc(100% - 30px);
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Feedback */
+.feedback {
+    background: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 20px;
+    margin: 20px 40px 40px;
+    border-radius: 4px;
+}
+
+.feedback p {
+    color: #2e7d32;
+    font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .scene {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .scene h2 {
+        font-size: 1.4rem;
+    }
+    
+    .narrative {
+        font-size: 1rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .scene-container {
+        background: #0f3460;
+        color: #e0e0e0;
+    }
+    
+    .scene h2 {
+        color: #9faef5;
+    }
+    
+    .narrative {
+        color: #d0d0d0;
+    }
+    
+    .choice-option {
+        border-color: #2a2a4a;
+        background-color: #1a1a3a;
+    }
+    
+    .choice-option:hover {
+        border-color: #667eea;
+        background-color: #252550;
+    }
+}

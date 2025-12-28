@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Project: Preface</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <main class="scene-container">
+        <header>
+            <h1>Writing Project: Preface</h1>
+        </header>
+        
+        <article class="scene">
+            <section class="narrative">
+                {{.Scene.Text}}
+            </section>
+            
+            {{if .Feedback}}
+            <aside class="feedback">
+                <p>{{.Feedback}}</p>
+            </aside>
+            {{end}}
+            
+            <section class="choices">
+                {{if eq .Scene.ThreadType "multi"}}
+                    <!-- Multiple choice -->
+                    <form method="POST" action="/choice">
+                        <input type="hidden" name="scene_id" value="{{.Scene.ID}}">
+                        
+                        {{range $index, $choice := .Scene.Choices}}
+                        <div class="choice-option">
+                            <input type="radio" 
+                                   id="choice-{{$index}}" 
+                                   name="choice_index" 
+                                   value="{{$index}}"
+                                   required>
+                            <label for="choice-{{$index}}">{{$choice.Text}}</label>
+                        </div>
+                        {{end}}
+                        
+                        <button type="submit" class="submit-btn">Continue</button>
+                    </form>
+                
+                {{else if eq .Scene.ThreadType "open"}}
+                    <!-- Open response -->
+                    <form method="POST" action="/choice">
+                        <input type="hidden" name="scene_id" value="{{.Scene.ID}}">
+                        
+                        <div class="open-response">
+                            <textarea name="user_text" 
+                                      rows="5" 
+                                      placeholder="Type your answer here..."
+                                      required
+                                      minlength="{{.Scene.MinLength}}"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                
+                {{else if eq .Scene.ThreadType "affirmative"}}
+                    <!-- Simple continue button -->
+                    <form method="POST" action="/choice">
+                        <input type="hidden" name="scene_id" value="{{.Scene.ID}}">
+                        <button type="submit" class="submit-btn">Continue</button>
+                    </form>
+                
+                {{else if eq .Scene.ThreadType "finisher"}}
+                    <!-- Finisher (stubbed for now) -->
+                    <form method="POST" action="/choice">
+                        <input type="hidden" name="scene_id" value="{{.Scene.ID}}">
+                        <p><em>(Real-time tokenization will be implemented here)</em></p>
+                        <button type="submit" class="submit-btn">Continue</button>
+                    </form>
+                {{end}}
+            </section>
+        </article>
+    </main>
+</body>
+</html>

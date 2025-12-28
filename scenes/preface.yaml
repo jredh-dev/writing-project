@@ -1,0 +1,110 @@
+# Preface Scenes for Writing Project
+# This is where you write your story content!
+
+scenes:
+  - id: preface.0:dream-start
+    thread_type: multi
+    text: |
+      You're floating in darkness. Whispers surround you, speaking of ancient powers and forgotten secrets.
+      A voice asks: 'What do you seek?'
+    
+    choices:
+      - text: Power to change the world
+        next: preface.1:registration
+        impact: player.strength+2
+      
+      - text: Knowledge of the truth
+        next: preface.1:registration
+        impact: player.intelligence+3
+      
+      - text: Peace and understanding
+        next: preface.1:registration
+        impact: player.empathy+2
+
+  - id: preface.1:registration
+    thread_type: affirmative
+    text: |
+      You wake with a start. Today is the day - registration at the Wincon Studiary,
+      the magic school your guardian found for you. Your apartment is quiet. Too quiet.
+      You grab your backpack and head out into the bustling city.
+    
+    next: preface.2:campus-tour
+    choices:
+      - text: Continue
+
+  - id: preface.2:campus-tour
+    thread_type: multi
+    text: |
+      The Studiary towers above you - a massive skyscraper of steel and glass,
+      with strange symbols glowing along its edges. Students mill about,
+      wands holstered at their sides. A helpful older student approaches.
+      'First day? Need help finding registration?'
+    
+    choices:
+      - text: Yes, please! I'm a bit lost.
+        next: preface.3:teacher-choice
+        impact: npc.helpful_student.relationship+5
+      
+      - text: No thanks, I can find it myself.
+        next: preface.3:teacher-choice
+        impact: player.independence+2
+
+  - id: preface.3:teacher-choice
+    thread_type: open
+    text: |
+      At registration, you're shown profiles of two teachers:
+
+      Professor Aldwin: Strict, traditional, teaches by-the-book magic theory.
+      Professor Sera: Creative, experimental, encourages improvisation and discovery.
+
+      Which teacher would you prefer, and why?
+    
+    validation:
+      min_length: 10
+    next: preface.4:assigned-teacher
+
+  - id: preface.4:assigned-teacher
+    thread_type: affirmative
+    text: |
+      The registrar smiles and hands you your class schedule.
+      'You're assigned to Professor Aldwin's class.' Wait... that's not who you chose!
+      Before you can protest, the registrar shakes your hand. Their palm is ice cold.
+      You feel a strange tingling sensation spreading up your arm...
+    
+    next: preface.5:tutorial-multiple
+    choices:
+      - text: Continue
+
+  - id: preface.5:tutorial-multiple
+    thread_type: multi
+    text: |
+      Welcome to the tutorial! In this game, you'll make choices.
+      Some choices have one correct answer. Let's practice:
+
+      What year did World War I begin?
+    
+    choices:
+      - text: "1912"
+        next: preface.6:end-of-demo
+      
+      - text: "1914"
+        next: preface.6:end-of-demo
+        impact: player.knowledge+1
+      
+      - text: "1916"
+        next: preface.6:end-of-demo
+      
+      - text: "1918"
+        next: preface.6:end-of-demo
+
+  - id: preface.6:end-of-demo
+    thread_type: affirmative
+    text: |
+      Demo Complete!
+      
+      You've reached the end of the current demo.
+      The full preface will have many more scenes!
+    
+    next: 0
+    choices:
+      - text: Finish
